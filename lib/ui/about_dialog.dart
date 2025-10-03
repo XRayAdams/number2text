@@ -1,3 +1,4 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
 
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';

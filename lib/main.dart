@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
+
 import 'package:flutter/material.dart';
 import 'package:number2text/ui/myhomepage.dart';
 import 'package:yaru/yaru.dart';

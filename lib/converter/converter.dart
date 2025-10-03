@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
+
 import 'package:number2text/converter/lng/french_converter.dart';
 import 'package:number2text/converter/lng/german_converter.dart';
 import 'package:number2text/converter/lng/russian_converter.dart';

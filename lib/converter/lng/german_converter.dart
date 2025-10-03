@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
+
 import 'base_converter.dart';
 
 class GermanConverter implements BaseConverter {

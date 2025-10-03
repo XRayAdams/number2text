@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
+
 import 'package:flutter/material.dart';
 import 'package:number2text/converter/converter.dart';
 import 'package:number2text/converter/lng/base_converter.dart';

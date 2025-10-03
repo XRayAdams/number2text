@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Konstantin Adamov. Licensed under the MIT license.
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesService {
