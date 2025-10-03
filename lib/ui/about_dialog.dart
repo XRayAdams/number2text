@@ -44,7 +44,7 @@ class _CustomAboutDialogState extends State<CustomAboutDialog> {
               const SizedBox(height: 50),
               const Center(
                 child: Image(
-                  image: AssetImage('assets/icon/icon.png'),
+                  image: AssetImage('assets/icon/app.rayadams.number2text.png'),
                   width: 150,
                   height: 150,
                 ),

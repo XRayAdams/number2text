@@ -1,0 +1,14 @@
+flutter_app: 
+  command: number2text
+  arch: x64
+  parent: /usr/local/lib
+  nonInteractive: true
+
+control:
+  Package: number2text
+  Version: 1.0.1
+  Architecture: amd64
+  Priority: optional
+  Depends:
+  Maintainer: Konstantin Adamov <xrayadamo@gmail.com>
+  Description: Any number to text converter

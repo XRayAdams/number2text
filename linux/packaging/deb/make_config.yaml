@@ -1,0 +1,37 @@
+display_name: Number 2 Text
+package_name: number2text
+
+maintainer:
+  name: Konstantin Adamov
+  email: xrayadamo@gmail.com
+
+priority: optional
+
+section: x11
+
+installed_size: 15700
+
+dependencies:
+
+essential: false
+license: MIT
+url: https://github.com/xrayadams/hex-generator
+
+icon: assets/icon/app.rayadams.number2text.png
+
+postuninstall_scripts:
+  - echo "Done. :("
+
+keywords:
+  - Number
+  - Number to text
+  - Number to words
+
+generic_name: Number to text
+
+categories:
+  - Development
+  - Utility
+
+startup_notify: false
+metainfo: linux/packaging/appdata.xml
