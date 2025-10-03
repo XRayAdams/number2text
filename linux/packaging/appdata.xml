@@ -8,11 +8,11 @@
     <description>
         <p>A Linux desktop application for spelling numbers into text.</p>
     </description>
-    <launchable type="desktop-id">number2text.desktop</launchable>
-    <url type="homepage">https://github.com/xrayadamo/number2text/</url>
+    <launchable type="desktop-id">app.rayadams.number2text.desktop</launchable>
+    <url type="homepage">https://github.com/xrayadamo/number2text</url>
     <screenshots>
         <screenshot type="default">
-            <image>https://github.com/xrayadamo/hexgenerator/41370460/bf942f1d-d26b-441d-b5b2-4ca210b5ea92</image>
+            <image>https://raw.githubusercontent.com/XRayAdams/number2text/refs/heads/master/screenshots/screenshot01.png</image>
         </screenshot>
     </screenshots>
     <releases>

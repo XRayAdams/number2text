@@ -1,12 +1,12 @@
-display_name: HEX Generator
+display_name: Number 2 Text
 
-icon: assets/icon/hexgenerator.png
+icon: assets/icon/app.rayadams.number2text.png
 
 keywords:
-  - HEX
-  - Generator
+  - Number
+  - Number to Text
 
-generic_name: HEX Generator
+generic_name: Number 2 Text
 
 # supported mime types that can be opened using this application
 # supported_mime_type:

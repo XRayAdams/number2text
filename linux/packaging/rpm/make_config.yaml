@@ -6,7 +6,7 @@ vendor: Konstantin Adamov
 packager: Konstantin Adamov
 packagerEmail: xrayadamo@gmail.com
 license: MIT
-url: https://github.com/xrayadams/hex-generator
+url: https://github.com/xrayadams/number2text
 
 display_name: Number to Text
 
