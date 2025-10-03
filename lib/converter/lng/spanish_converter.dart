@@ -4,6 +4,9 @@ class SpanishConverter implements BaseConverter {
   @override
   String get name => "Spanish";
 
+  @override
+  String get native_number_too_large_error_text => "Número demasiado grande";
+
   static const List<String> _ones = [
     "cero",
     "uno",
@@ -42,6 +45,10 @@ class SpanishConverter implements BaseConverter {
 
   @override
   String convert(int input) {
+     if (input > 999999999999) {
+      return native_number_too_large_error_text;
+    }
+
     if (input < 0) {
       return "menos ${convert(-input)}";
     }
@@ -93,7 +100,7 @@ class SpanishConverter implements BaseConverter {
 
       return "$thousandsStr ${convert(remainder)}";
     }
-    if (input < 1000000000000) {
+    if (input < 1000000000) {
       final millions = input ~/ 1000000;
       final remainder = input % 1000000;
 
@@ -108,6 +115,22 @@ class SpanishConverter implements BaseConverter {
 
       return "$millionsStr ${convert(remainder)}";
     }
-    return "Número demasiado grande";
+    if (input < 1000000000000) {
+      final billions = input ~/ 1000000000;
+      final remainder = input % 1000000000;
+
+      String billionsStr;
+      if (billions == 1) {
+        billionsStr = "mil millones";
+      } else {
+        billionsStr = "${convert(billions)} mil millones";
+      }
+
+      if (remainder == 0) return billionsStr;
+
+      return "$billionsStr ${convert(remainder)}";
+    }
+
+    return native_number_too_large_error_text;
   }
 }

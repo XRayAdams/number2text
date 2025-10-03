@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:number2text/ui/myhomepage.dart';
-import 'package:provider/provider.dart';
 import 'package:yaru/yaru.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -18,19 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return YaruTheme(
       builder: (context, yaru, child) {
-        return MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (context) => ChangeNotifier()),
-          ],
-          child: MaterialApp(
-            navigatorKey: navigatorKey,
-            // Assign the GlobalKey
-            title: 'Number 2 Text',
-            theme: yaru.theme,
-            darkTheme: yaru.darkTheme,
-            themeMode: ThemeMode.system,
-            home: const MyHomePage(title: 'Number 2 Text'),
-          ),
+        return MaterialApp(
+          navigatorKey: navigatorKey,
+          // Assign the GlobalKey
+          title: 'Number 2 Text',
+          theme: yaru.theme,
+          darkTheme: yaru.darkTheme,
+          themeMode: ThemeMode.system,
+          home: const MyHomePage(title: 'Number 2 Text'),
         );
       },
     );

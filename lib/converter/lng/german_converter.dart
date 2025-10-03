@@ -1,47 +1,46 @@
 import 'base_converter.dart';
 
-class FrenchConverter implements BaseConverter {
+class GermanConverter implements BaseConverter {
   @override
-  String get name => "French";
-  
-  @override
-  String get native_number_too_large_error_text => "Nombre trop grand";
+  String get name => "German";
 
+  @override
+  String get native_number_too_large_error_text => "Nummer zu groß";
 
   static const List<String> _ones = [
-    "zéro",
-    "un",
-    "deux",
-    "trois",
-    "quatre",
-    "cinq",
-    "six",
-    "sept",
-    "huit",
-    "neuf",
-    "dix",
-    "onze",
-    "douze",
-    "treize",
-    "quatorze",
-    "quinze",
-    "seize",
-    "dix-sept",
-    "dix-huit",
-    "dix-neuf"
+    "null",
+    "eins",
+    "zwei",
+    "drei",
+    "vier",
+    "fünf",
+    "sechs",
+    "sieben",
+    "acht",
+    "neun",
+    "zehn",
+    "elf",
+    "zwölf",
+    "dreizehn",
+    "vierzehn",
+    "fünfzehn",
+    "sechzehn",
+    "siebzehn",
+    "achtzehn",
+    "neunzehn"
   ];
 
   static const List<String> _tens = [
     "",
-    "dix",
-    "vingt",
-    "trente",
-    "quarante",
-    "cinquante",
-    "soixante",
-    "soixante-dix",
-    "quatre-vingts",
-    "quatre-vingt-dix"
+    "",
+    "zwanzig",
+    "dreißig",
+    "vierzig",
+    "fünfzig",
+    "sechzig",
+    "siebzig",
+    "achtzig",
+    "neunzig"
   ];
 
   @override
@@ -51,7 +50,10 @@ class FrenchConverter implements BaseConverter {
     }
 
     if (input < 0) {
-      return "moins ${convert(-input)}";
+      return "minus ${convert(-input)}";
+    }
+    if (input == 0) {
+      return "null";
     }
     if (input < 20) {
       return _ones[input];
@@ -61,50 +63,41 @@ class FrenchConverter implements BaseConverter {
       final unit = input % 10;
       if (unit == 0) {
         return _tens[ten];
+      } else if (unit == 1) {
+        return "einund${_tens[ten]}";
       }
-      if (ten == 7 || ten == 9) {
-        return "${_tens[ten - 1]}-${_ones[10 + unit]}";
-      }
-      if (ten == 8) {
-        return "${_tens[ten]}-${_ones[unit]}";
-      }
-      if (unit == 1) {
-        return "${_tens[ten]} et un";
-      }
-      return "${_tens[ten]}-${_ones[unit]}";
+      return "${_ones[unit]}und${_tens[ten]}";
     }
     if (input < 1000) {
       final hundred = input ~/ 100;
       final remainder = input % 100;
-      String hundredsStr;
-      if (hundred == 1) {
-        hundredsStr = "cent";
-      } else {
-        hundredsStr = "${_ones[hundred]} cents";
+      String hundredsStr = "hundert";
+      if (hundred > 1) {
+        hundredsStr = "${_ones[hundred]}hundert";
       }
       if (remainder == 0) return hundredsStr;
-      return "$hundredsStr ${convert(remainder)}";
+      return "$hundredsStr${convert(remainder)}";
     }
     if (input < 1000000) {
       final thousands = input ~/ 1000;
       final remainder = input % 1000;
       String thousandsStr;
       if (thousands == 1) {
-        thousandsStr = "mille";
+        thousandsStr = "eintausend";
       } else {
-        thousandsStr = "${convert(thousands)} mille";
+        thousandsStr = "${convert(thousands)}tausend";
       }
       if (remainder == 0) return thousandsStr;
-      return "$thousandsStr ${convert(remainder)}";
+      return "$thousandsStr${convert(remainder)}";
     }
     if (input < 1000000000) {
       final millions = input ~/ 1000000;
       final remainder = input % 1000000;
       String millionsStr;
       if (millions == 1) {
-        millionsStr = "un million";
+        millionsStr = "eine Million";
       } else {
-        millionsStr = "${convert(millions)} millions";
+        millionsStr = "${convert(millions)} Millionen";
       }
       if (remainder == 0) return millionsStr;
       return "$millionsStr ${convert(remainder)}";
@@ -114,9 +107,9 @@ class FrenchConverter implements BaseConverter {
       final remainder = input % 1000000000;
       String billionsStr;
       if (billions == 1) {
-        billionsStr = "un milliard";
+        billionsStr = "eine Milliarde";
       } else {
-        billionsStr = "${convert(billions)} milliards";
+        billionsStr = "${convert(billions)} Milliarden";
       }
       if (remainder == 0) return billionsStr;
       return "$billionsStr ${convert(remainder)}";

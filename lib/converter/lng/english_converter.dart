@@ -4,6 +4,9 @@ class EnglishConverter implements BaseConverter {
   @override
   String get name => "English";
 
+  @override
+  String get native_number_too_large_error_text => "Number too large";
+
   static const List<String> _ones = [
     "zero",
     "one",
@@ -42,6 +45,10 @@ class EnglishConverter implements BaseConverter {
 
   @override
   String convert(int input) {
+    if (input > 999999999999) {
+        return native_number_too_large_error_text;
+    }
+
     if (input < 0) {
       return "minus ${convert(-input)}";
     }
@@ -63,6 +70,6 @@ class EnglishConverter implements BaseConverter {
     if (input < 1000000000000) {
       return "${convert(input ~/ 1000000000)} billion${input % 1000000000 != 0 ? " ${convert(input % 1000000000)}" : ""}";
     }
-    return "Number too large";
+    return native_number_too_large_error_text;
   }
 }
