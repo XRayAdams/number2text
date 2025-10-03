@@ -60,5 +60,11 @@ void main() {
     test('should convert negative numbers', () {
       expect(converter.convert(-5), 'menos cinco');
     });
+
+    test('should convert billions', () {
+      expect(converter.convert(1000000000), 'mil millones');
+      expect(converter.convert(2000000000), 'dos mil millones');
+      expect(converter.convert(1234567890), 'mil doscientos treinta y cuatro millones quinientos sesenta y siete mil ochocientos noventa');
+    });
   });
 }

@@ -93,7 +93,7 @@ class SpanishConverter implements BaseConverter {
 
       return "$thousandsStr ${convert(remainder)}";
     }
-    if (input < 1000000000) {
+    if (input < 1000000000000) {
       final millions = input ~/ 1000000;
       final remainder = input % 1000000;
 
