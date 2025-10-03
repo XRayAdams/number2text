@@ -108,24 +108,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(width: kYaruPagePadding),
                 const Text('Select Language'),
                 const SizedBox(width: kYaruPagePadding),
-                SizedBox(
-                  width: 150,
-                  child: DropdownButton<BaseConverter>(
-                    isExpanded: true,
-                    value: _selectedLanguage,
-                    onChanged: (BaseConverter? newValue) {
-                      if (newValue != null) {
-                        setState(() {
-                          _selectedLanguage = newValue;
-                        });
-                        _preferencesService.saveLanguage(newValue.name);
-                        _onInputChanged();
-                      }
-                    },
-                    items: _converter.baseConverters.map<DropdownMenuItem<BaseConverter>>((BaseConverter value) {
-                      return DropdownMenuItem<BaseConverter>(value: value, child: Text(value.name));
-                    }).toList(),
-                  ),
+                YaruPopupMenuButton<BaseConverter>(
+                  initialValue: _selectedLanguage,
+                  onSelected: (BaseConverter value) {
+                    setState(() {
+                      _selectedLanguage = value;
+                    });
+                    _preferencesService.saveLanguage(value.name);
+                    _onInputChanged();
+                  },
+                  child: Text(_selectedLanguage?.name ?? 'Select Language'),
+                  itemBuilder: (BuildContext context) {
+                    return _converter.baseConverters.map<PopupMenuItem<BaseConverter>>((BaseConverter value) {
+                      return PopupMenuItem(value: value, child: Text(value.name));
+                    }).toList();
+                  },
                 ),
               ],
             ),
