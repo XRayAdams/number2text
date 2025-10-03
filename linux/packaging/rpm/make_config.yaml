@@ -1,5 +1,5 @@
 package_name: number2text
-icon: assets/icon/app.rayadams.number2text.png
+icon: snap/gui/app.rayadams.number2text.png
 summary: Number 2 Text
 group: Application/Development
 vendor: Konstantin Adamov

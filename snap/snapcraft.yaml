@@ -1,0 +1,33 @@
+name: number2text
+version: 1.0.0
+summary: Number to Text
+description: Number to Text generator
+contact: xrayadamo@gmail.com
+icon: snap/gui/app.rayadams.number2text.png
+confinement: strict
+base: core22
+grade: stable
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+slots:
+  dbus-number2text: # adjust accordingly to your app name
+    interface: dbus
+    bus: session
+    name: app.rayadams.number2text # adjust accordingly to your app name and
+    
+apps:
+  number2text:
+    command: number2text
+    extensions: [gnome]
+    plugs:
+      - network
+    slots:
+      - dbus-number2text
+parts:
+  number2text:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
