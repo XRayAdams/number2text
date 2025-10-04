@@ -42,7 +42,7 @@ class FrenchConverter implements BaseConverter {
     "cinquante",
     "soixante",
     "soixante-dix",
-    "quatre-vingts",
+    "quatre-vingt",
     "quatre-vingt-dix"
   ];
 
@@ -61,17 +61,21 @@ class FrenchConverter implements BaseConverter {
     if (input < 100) {
       final ten = input ~/ 10;
       final unit = input % 10;
+      if (input == 80) return "quatre-vingts";
       if (unit == 0) {
         return _tens[ten];
       }
       if (ten == 7 || ten == 9) {
+        if (input == 71) {
+          return "soixante-et-onze";
+        }
         return "${_tens[ten - 1]}-${_ones[10 + unit]}";
       }
       if (ten == 8) {
         return "${_tens[ten]}-${_ones[unit]}";
       }
       if (unit == 1) {
-        return "${_tens[ten]} et un";
+        return "${_tens[ten]}-et-un";
       }
       return "${_tens[ten]}-${_ones[unit]}";
     }
@@ -82,7 +86,7 @@ class FrenchConverter implements BaseConverter {
       if (hundred == 1) {
         hundredsStr = "cent";
       } else {
-        hundredsStr = "${_ones[hundred]} cents";
+        hundredsStr = "${_ones[hundred]} cent${remainder == 0 ? 's' : ''}";
       }
       if (remainder == 0) return hundredsStr;
       return "$hundredsStr ${convert(remainder)}";
