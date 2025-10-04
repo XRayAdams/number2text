@@ -1,5 +1,6 @@
+title: Number to text
 name: number2text
-version: 1.0.0
+version: 1.0.1+5
 summary: Number to Text
 description: Number to Text generator
 contact: xrayadamo@gmail.com
@@ -7,6 +8,9 @@ icon: snap/gui/app.rayadams.number2text.png
 confinement: strict
 base: core22
 grade: stable
+license: MIT
+source-code: https://github.com/rayadams/number2text
+website: https://github.com/rayadams/number2text
 
 architectures:
   - build-on: amd64
@@ -24,8 +28,6 @@ apps:
     extensions: [gnome]
     plugs:
       - network
-    slots:
-      - dbus-number2text
 parts:
   number2text:
     source: .

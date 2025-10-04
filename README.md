@@ -25,6 +25,10 @@ Number 2 Text is a free, open-source application to convert numbers to text.
    sudo dpkg -i [name-of-the-package].deb
    ```
 
+Install from Snap Store
+
+[![number2text](https://snapcraft.io/number2text/badge.svg)](https://snapcraft.io/number2text)
+
 ## Contributing
 
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, please feel free to open an issue or submit a pull request on the project's GitHub page.
