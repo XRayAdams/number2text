@@ -12,11 +12,11 @@ architectures:
   - build-on: amd64
   - build-on: arm64
 
-slots:
-  dbus-number2text: # adjust accordingly to your app name
-    interface: dbus
-    bus: session
-    name: app.rayadams.number2text # adjust accordingly to your app name and
+#slots:
+  #dbus-number2text: # adjust accordingly to your app name
+    #interface: dbus
+    #bus: session
+    #name: app.rayadams.number2text # adjust accordingly to your app name and
     
 apps:
   number2text:
