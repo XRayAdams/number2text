@@ -123,12 +123,12 @@ class SpanishConverter implements BaseConverter {
 
       String billionsStr;
       if (billions == 1) {
-        billionsStr = "mil millones";
+        billionsStr = "mil";
       } else {
-        billionsStr = "${convert(billions)} mil millones";
+        billionsStr = "${convert(billions)} mil";
       }
 
-      if (remainder == 0) return billionsStr;
+      if (remainder == 0) return "$billionsStr millones";
 
       return "$billionsStr ${convert(remainder)}";
     }
