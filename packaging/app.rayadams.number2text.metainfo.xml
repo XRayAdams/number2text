@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>number2text.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Number to Text converter</name>
+  <summary>Number 2 Text is a free, open-source application to convert numbers to text.</summary>
+  <url type="homepage">https://github.com/XRayAdams/number2text</url>
+  <content_rating type="oars-1.1"><category>Age 3+</category></content_rating>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/XRayAdams/number2text/refs/heads/master/screenshots/screenshot01.png</image>
+      <caption>Main window UI</caption>
+    </screenshot>
+  </screenshots>
+</component>
