@@ -16,7 +16,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState(title: title);
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -25,9 +25,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final _outputController = TextEditingController();
   final _preferencesService = PreferencesService();
   final _converter = NumberConverter();
-
-  _MyHomePageState({required this.title});
-  final String title;
 
   @override
   void initState() {
@@ -72,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: YaruWindowTitleBar(
-        title: Text(title),
+        title: Text(widget.title),
         actions: [
           YaruOptionButton(
             child: const Icon(YaruIcons.menu),
