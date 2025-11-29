@@ -76,8 +76,6 @@ class _CustomAboutDialogState extends State<CustomAboutDialog> {
               ),
               const SizedBox(height: 8),
               const Text('© 2025 Konstantin Adamov'),
-              const SizedBox(height: 8),
-              const Text('Author: Konstantin Adamov <xrayadamo@gmail.com>'),
               TextButton(
                 onPressed: () => _launchUrl('https://www.rayadams.app'),
                 child: const Text('https://www.rayadams.app'),

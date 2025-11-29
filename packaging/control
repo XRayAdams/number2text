@@ -1,5 +1,5 @@
 Package: number2text
-Version: 1.0.4+12
+Version: 1.0.5+15
 Architecture: amd64
 Priority: optional
 Depends:
