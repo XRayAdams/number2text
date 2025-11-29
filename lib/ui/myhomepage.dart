@@ -9,6 +9,7 @@ import 'package:yaru/icons.dart';
 import 'package:yaru/widgets.dart';
 
 import 'about_dialog.dart';
+import 'arrow_popup_menu.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -23,6 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   BaseConverter? _selectedLanguage;
   final _inputController = TextEditingController();
   final _outputController = TextEditingController();
+  final _inputFocusNode = FocusNode();
   final _preferencesService = PreferencesService();
   final _converter = NumberConverter();
 
@@ -31,6 +33,10 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _loadLanguage();
     _inputController.addListener(_onInputChanged);
+    // Request focus for the input field when the app starts
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _inputFocusNode.requestFocus();
+    });
   }
 
   void _loadLanguage() async {
@@ -48,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _inputController.removeListener(_onInputChanged);
     _inputController.dispose();
     _outputController.dispose();
+    _inputFocusNode.dispose();
     super.dispose();
   }
 
@@ -71,26 +78,45 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: YaruWindowTitleBar(
         title: Text(widget.title),
         actions: [
-          YaruOptionButton(
-            child: const Icon(YaruIcons.menu),
-            onPressed: () {
-              final RenderBox renderBox = context.findRenderObject() as RenderBox;
-              final Offset offset = renderBox.localToGlobal(Offset.zero);
-              showMenu(
-                context: context,
-                position: RelativeRect.fromLTRB(
-                  offset.dx + renderBox.size.width - 190,
-                  offset.dy + 50,
-                  offset.dx + renderBox.size.width,
-                  offset.dy,
-                ),
-                items: [const PopupMenuItem(value: "about", child: Text("About..."))],
-              ).then((value) {
-                if (value == "about") {
-                  showDialog(context: context, builder: (context) => const CustomAboutDialog());
-                }
-              });
-            },
+          Builder(
+            builder: (buttonContext) {
+              return YaruOptionButton(
+                child: const Icon(YaruIcons.menu),
+                onPressed: () {
+
+                  final RenderBox renderBox = buttonContext.findRenderObject() as RenderBox;
+                  final Offset offset = renderBox.localToGlobal(Offset.zero);
+                  final Size buttonSize = renderBox.size;
+
+                  // Calculate button center position
+                  final buttonCenterX = offset.dx + buttonSize.width / 2;
+
+                  // Position menu centered below the button
+                  // Since arrow is centered in menu, position menu so its center aligns with button center
+                  final menuLeft = buttonCenterX - 90;  // 180 max width / 2 = 110
+
+                  showArrowPopupMenu<String>(
+                    context: context,
+                    position: RelativeRect.fromLTRB(
+                      menuLeft,
+                      offset.dy + buttonSize.height + 5,
+                      0,
+                      0,
+                    ),
+                    items: [
+                      const ArrowPopupMenuItem(
+                        value: "about",
+                        child: Text("About..."),
+                      ),
+                    ],
+                  ).then((value) {
+                    if (value == "about") {
+                      showDialog(context: context, builder: (context) => const CustomAboutDialog());
+                    }
+                  });
+                },
+              );
+            }
           ),
         ],
       ),
@@ -105,6 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 250,
                   child: TextField(
                     controller: _inputController,
+                    focusNode: _inputFocusNode,
                     decoration: InputDecoration(border: OutlineInputBorder(), labelText: 'Enter a number'),
                   ),
                 ),
