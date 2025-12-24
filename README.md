@@ -2,6 +2,7 @@
 
 Number 2 Text is a free, open-source application to convert numbers to text.
 
+This project is closed. New project, build using Rust and GTK located here [https://github.com/XRayAdams/number2text-rs](https://github.com/XRayAdams/number2text-rs)
 ## Supported Languages
 
 * English
